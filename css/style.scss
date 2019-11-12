@@ -1,0 +1,537 @@
+// colors
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Ruthie&display=swap');
+
+$primary: #E5E7DA;
+$bgColor: #303030;
+$bgColorSee: #c7ac9644;
+$borderColor: #7a4322;
+$accent: #443517;
+$shadowColor: #986737;
+
+// font
+
+$font-head: 'Ruthie', cursive;
+$font-body: 'EB Garamond', serif;
+$small: 0.8rem;
+$header: 5.5rem;
+$large: 3rem;
+$medium: 1.5rem;
+$normal: 1rem;
+$footer: 1.2rem;
+
+// display mixin
+@mixin flex($height, $width, $display, $flowDir, $flowWrap, $justify, $align) {
+    height: $height;
+    width: $width;
+    display: $display;
+    flex-flow: $flowDir $flowWrap;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// text shadow mixin
+
+@mixin shadow($x1, $y1, $blur1, $color1, $x2, $y2, $blur2, $color2) {
+    text-shadow: $x1 $y1 $blur1 $color1,
+                 $x2 $y2 $blur2 $color2;
+}
+// body stiling
+
+body {
+    background-color: $bgColor;
+    font-family: $font-body;
+    font-size: $medium;
+    color: $primary;
+    margin: 0;
+    max-width: 960px;
+    margin: 0 auto;
+
+    
+}
+
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px $shadowColor;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $borderColor;
+  outline: 1px solid $bgColor;
+}
+
+
+
+// Header and nav styling
+header {
+        background: url("../img/background- header-cup.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 960px;
+    height: 750px;
+    
+    #nav-cont {
+        
+        width: 960px;
+        height: auto;
+        z-index: 10;
+        position: fixed;
+        transition: all 1s linear;
+        
+       
+
+        // .show {
+             
+        // }
+
+        .disapear {
+            position: static;
+        }
+
+        nav {
+            @include flex(80px, 100%, flex, row, nowrap, space-between, center);
+            @include shadow(1px, 1px, 2px, $borderColor, 2px, 2px, 4px, $shadowColor);
+            width: 960px;
+            z-index: 99;
+            ul {
+                list-style-type: none;
+            }
+
+            .hidden {
+                visibility: hidden;
+                margin: 0 2px 0 0;
+            }
+            a {
+                text-decoration: none;
+                color: $primary;
+
+                &:active, &:visited {
+                    color:$primary;
+                }
+
+                &:hover {
+                    color: $bgColor;
+                    .hidden {
+                        visibility: visible;
+                    }   
+                }
+
+            }
+            #logo {
+                margin: 0 15px;
+                text-align: center;
+                flex-grow: 2;
+
+                img {
+                    height: 80px;
+                }
+            }
+            #local-nav {
+                @include flex(80px, 50%, flex, row, nowrap, space-around, center);
+                flex-grow: 8;
+
+            }
+
+            #places-dropdown, #offer-dropdown{
+                display: none;
+            
+                
+            
+            }
+
+            #home:hover #places-dropdown, #offer:hover #offer-dropdown {
+            
+                display: block;
+                position: absolute;
+                padding: 20px 0 10px 10px;
+                z-index: 50;
+                height: 100px; 
+                min-width: 150px;  
+                color: $shadowColor;
+                background-color: $bgColorSee;
+
+                
+
+            }
+
+            #offer:hover #offer-dropdown {
+                overflow-y: scroll;
+            }
+
+            #offer-dropdown::-webkit-scrollbar {
+                width: 0.5em;
+            }
+
+            #offer-dropdown::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 6px $shadowColor;
+            }
+
+            #offer-dropdown::-webkit-scrollbar-thumb {
+                background-color: $borderColor;
+                outline: 1px solid $bgColor;
+            }
+
+
+            #social-links {
+                @include flex(80px, auto, flex, row, nowrap, space-around, center);
+                flex-grow: 2;
+                margin: 0 15px;
+            
+            }
+
+        
+        }
+    
+    }
+
+    #title-container{
+        @include flex(100%, 50%, flex, column, nowrap, center, center);
+        margin: 0 auto;
+        h1 {
+          font-size: $header;
+          font-family: $font-head;
+          color: $borderColor;
+
+        };
+         p {
+            font-size: $medium;
+            font-family: $font-body;
+            font-weight: 600;
+            color: $primary;
+
+
+         }
+
+    }
+
+}
+
+nav {
+    @include flex(80px, 100%, flex, row, nowrap, space-between, center);
+    @include shadow(1px, 1px, 2px, $borderColor, 2px, 2px, 4px, $shadowColor);
+    width: 960px;
+    z-index: 99;
+    ul {
+        list-style-type: none;
+    }
+
+    .hidden {
+        visibility: hidden;
+        margin: 0 2px 0 0;
+    }
+    a {
+        text-decoration: none;
+        color: $primary;
+
+        &:active, &:visited {
+            color:$primary;
+        }
+
+        &:hover {
+            color: $bgColor;
+            .hidden {
+                visibility: visible;
+            }   
+        }
+
+    }
+    #logo {
+        margin: 0 15px;
+        text-align: center;
+        flex-grow: 2;
+
+        img {
+            height: 80px;
+        }
+    }
+    #local-nav {
+        @include flex(80px, 50%, flex, row, nowrap, space-around, center);
+        flex-grow: 8;
+
+    }
+
+    #places-dropdown, #offer-dropdown{
+        display: none;
+       
+        
+       
+    }
+
+    #home:hover #places-dropdown, #offer:hover #offer-dropdown {
+       
+        display: block;
+        position: absolute;
+        padding: 20px 0 10px 10px;
+        z-index: 50;
+        height: 100px; 
+        min-width: 150px;  
+        color: $shadowColor;
+        background-color: $bgColorSee;
+
+        
+
+    }
+
+    #offer:hover #offer-dropdown {
+        overflow-y: scroll;
+    }
+
+    #offer-dropdown::-webkit-scrollbar {
+        width: 0.5em;
+    }
+
+    #offer-dropdown::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px $shadowColor;
+    }
+
+    #offer-dropdown::-webkit-scrollbar-thumb {
+        background-color: $borderColor;
+        outline: 1px solid $bgColor;
+}
+
+
+    #social-links {
+        @include flex(80px, auto, flex, row, nowrap, space-around, center);
+        flex-grow: 2;
+        margin: 0 15px;
+       
+    }
+
+   
+}
+
+
+
+// The main start here
+
+// map of the image sources for the boxes
+
+$images: (
+    img-src1:"../img/cappucinno-2-small.jpg",
+    img-src2:"../img/cappucinno-3-small.jpg",
+    img-src3:"../img/cappucinno-4-small.jpg",
+    img-src4:"../img/cappucinno-small.jpg",
+    img-src5:"../img/espresso-2-small.jpg",
+    img-src6:"../img/frape-small.jpg",
+    img-src7:"../img/espresso-3-small.jpg",
+    img-src8:"../img/take-out small.jpg"
+
+);
+
+main {
+    box-sizing: border-box;
+    width: 960px;
+    height: auto;
+    border: 2px solid $borderColor;
+    padding: 50px 0;
+    
+    @include flex(90vh, 960px, flex, row, nowrap, center, center);
+    z-index: 99;
+
+    #container {
+        width: 90%;
+        height: auto;
+        padding: 30px 0;
+  
+
+
+        #line-2 {
+            margin-top: -60px;
+               
+        }
+
+         #line-3 {
+             margin-top: -60px;
+         }   
+
+        .line {
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+
+            a {
+               text-decoration: none;
+                color: $primary;
+
+                &:active, &:visited {
+                    color:$primary;
+                }
+
+                p {
+                    font-size: $medium;
+                    color: transparent;
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+                    margin-inline-start: 0;
+                    margin-inline-end: 0;
+                    transition: all 0.7s ease;
+                    transition-delay: 0.3s;                 
+                }
+
+            }
+
+            
+            .box {
+                height: 220px;
+                width: 220px; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                margin: 10px;
+                filter: grayscale(70%);
+                transition: all 0.5s ease;
+            
+                &:hover {
+                    filter: none;
+
+                    p {
+                        color: #f5f5f5;
+                        @include shadow(1px, 1px, 1px, $borderColor, 2px, 2px, 3px, $shadowColor);
+                        background-color: #22222299;
+                    }
+                }
+
+             }
+
+
+            @for $i from 1 through 8 {
+                .box#{$i} {
+                    background: url(map-get($images, img-src#{$i}));
+                                      
+                }
+                
+            }    
+        }      
+    }
+}
+
+footer {
+    @include flex(auto, 960px, flex, column, nowrap, flex-start, center);
+   
+    background-color: $borderColor;
+    color: $bgColor;
+    font-size: $footer;
+    padding: 0 0 50px 0;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $bgColor;
+        
+            &:visited, &:active {
+                color: $bgColor;
+            }
+    }
+
+    p {
+        width: 70%;
+        font-size: $normal;
+        text-align: center;
+        color: $primary;
+    }
+
+    #footer-container {
+        @include flex(auto, 90%, flex, row, nowrap, space-between,flex-start);
+
+        #footer1 {
+
+            flex-grow: 2;
+
+                ul {
+
+                        #footer-links ul {
+                            @include flex(auto, 50%, flex, row, nowrap, space-between, center);
+                            margin: 10px 0 0 0;
+                        }
+
+                        a {
+                        text-decoration: none;
+                        color: $bgColor;
+                        
+                            &:visited, &:active {
+                                color: $bgColor;
+                            }
+                        }
+                    }
+
+                }
+        #footer2 {
+            flex-grow: 2;
+            display: flex;
+            flex-flow: row nowrap;
+        
+
+            #button-cont {
+                display: flex;
+                flex-direction: column;
+                margin-left: 100px;
+                
+                button {
+                    padding: 10px 20px;
+                    background-color: $bgColorSee;
+                    font-size: $normal;
+                    margin-top: 20px;
+                    border-radius: 10px;
+                    width: 130px;
+
+                    &:hover {
+                        background-color: $bgColor;
+                        color: $primary;
+                        cursor: pointer;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                 
+            }
+
+            ul {
+                margin-top: -20px;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-content: center;
+
+                li {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        #footer3 {
+            flex-grow: 4;
+            display: flex;
+            justify-content: flex-end;
+            height: 200px;
+            width: 500px;  
+            margin: 1px solid $primary;
+            padding: 30px 0 0 0;
+
+            iframe {
+               width: 500px;
+               height: 200px;
+            }
+        
+            
+            .esbjerg {
+                content:
+                    '<iframe id="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1130.8947366871596!2d8.450990772180058!3d55.4663367107024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464b26d4d33378cf%3A0x751640d1ecc62e82!2sTorvet%2014%2C%206700%20Esbjerg!5e0!3m2!1sro!2sdk!4v1573226286747!5m2!1sro!2sdk" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+            }
+        }
+    }
+}
+
+
+
+
+
