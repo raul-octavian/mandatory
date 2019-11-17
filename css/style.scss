@@ -13,7 +13,7 @@ $shadowColor: #986737;
 $font-head: 'Ruthie', cursive;
 $font-body: 'EB Garamond', serif;
 $small: 0.8rem;
-$header: 5.0rem;
+$header: 5rem;
 $large: 3rem;
 $medium: 1.5rem;
 $normal: 1rem;
@@ -45,6 +45,7 @@ body {
     margin: 0;
     max-width: 960px;
     margin: 0 auto;
+    min-height: 1784px;
 
     
 }
@@ -75,7 +76,7 @@ header {
         
         width: 960px;
         height: auto;
-        z-index: 10;
+        z-index: 90;
         position: fixed;
         transition: all 1s linear;
         
@@ -321,13 +322,11 @@ $images: (
 
 main {
     box-sizing: border-box;
-    width: 960px;
-    height: auto;
     border: 2px solid $borderColor;
     padding: 50px 0;
     
-    @include flex(90vh, 960px, flex, row, nowrap, center, center);
-    z-index: 99;
+    @include flex(604px, 960px, flex, row, nowrap, center, center);
+    z-index: 10;
 
     #container {
         width: 90%;
@@ -410,6 +409,8 @@ main {
 }
 
 footer {
+
+    z-index: 999;
     @include flex(auto, 960px, flex, column, nowrap, flex-start, center);
    
     background-color: $borderColor;
